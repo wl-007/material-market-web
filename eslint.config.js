@@ -2,6 +2,7 @@ import js from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
+import react from 'eslint-plugin-react'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
@@ -16,6 +17,7 @@ export default tseslint.config(
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      react:react
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
@@ -23,6 +25,10 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      ...react.configs.recommended.rules,
+      '@typescript-eslint/no-unused-vars': 'off',
+      'react/react-in-jsx-scope': 'off',
+      "no-console": 2 ,// 如果有console，会抛出错误
       'quotes': ['error', 'single'], //单引号
     },
   },
